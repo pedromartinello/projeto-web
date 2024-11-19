@@ -4,19 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Pokemon extends Model
+class Coach extends Model
 {
     use HasFactory;
-
     protected $fillable = [
         'nome',
-        'tipo',
-        'pontos_de_poder',
-        'coach_id',
     ];
-
-    public function coach(){
-        return $this->belongsTo(Coach::class);
+    public function pokemon(): HasMany
+    {
+        return $this->hasMany(Pokemon::class);
     }
 }
